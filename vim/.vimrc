@@ -53,6 +53,11 @@ set laststatus=2
 syntax on
 set cursorline
 set cursorcolumn
+set showcmd
+set ruler
+set incsearch
+set hlsearch
+set mouse=a
 
 set smartindent
 set autoindent
@@ -61,7 +66,7 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 
-map <C-n> :NERDTreeToggle<CR>
+map <C-1> :NERDTreeToggle<CR>
 let NERDTreeMapActivateNode='<right>'   " hit right arrow to open a node
 let NERDTreeShowHidden=1                " show hidden files
 nmap <C-j> :NERDTreeFind<CR>
@@ -69,9 +74,9 @@ let NERDTreeMouseMode=2
 let NERDTreeShowHidden=1
 
 nmap <F8> :TagbarToggle<CR>
-"nnoremap <C-s> :w!<CR>
-"inoremap <C-s> <ESC>:w!<CR>
-"vnoremap <C-s> <ESC>:w!<CR>
+nnoremap <C-s> :w<CR>
+inoremap <C-s> <Esc>:w<CR>
+vnoremap <C-s> <Esc>:w<CR>
 
 let g:airline#extensions#tabline#enabled = 1
 
