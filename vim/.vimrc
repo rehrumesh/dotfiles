@@ -58,6 +58,7 @@ set ruler
 set incsearch
 set hlsearch
 set mouse=a
+set colorcolumn=81
 
 set smartindent
 set autoindent
@@ -66,7 +67,7 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 
-map <C-1> :NERDTreeToggle<CR>
+map <C-n> :NERDTreeToggle<CR>
 let NERDTreeMapActivateNode='<right>'   " hit right arrow to open a node
 let NERDTreeShowHidden=1                " show hidden files
 nmap <C-j> :NERDTreeFind<CR>
@@ -74,9 +75,6 @@ let NERDTreeMouseMode=2
 let NERDTreeShowHidden=1
 
 nmap <F8> :TagbarToggle<CR>
-nnoremap <C-s> :w<CR>
-inoremap <C-s> <Esc>:w<CR>
-vnoremap <C-s> <Esc>:w<CR>
 
 let g:airline#extensions#tabline#enabled = 1
 
@@ -117,3 +115,27 @@ set statusline+=%*
 " syntatstic settings
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_check_on_open = 1
+
+" Source Compile
+func! Compile()
+    if &filetype == 'c'
+        exec "!cc % -o %<"
+    elseif &filetype == 'java'
+        exec "!javac -g %"
+    endif
+endfunc
+map <F5> :call Compile()<CR>
+
+func! Run()
+    if &filetype == "java"
+        exec "!time java -cp %:p:h %:t:r"
+    endi
+endfunc
+map <F6> :call Run()<CR>
+
+fun! Debug()
+    if &filetype == 'java'
+        exec "!jdb %:t:r"
+    endif
+endfunc
+map <F7> :call Debug()<CR>
