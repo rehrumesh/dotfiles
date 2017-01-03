@@ -11,3 +11,6 @@ npm install
 
 cd ~/.vim/bundle/YouCompleteMe
 ./install.py --clang-completer --tern-completer
+
+
+npm install -g git+https://github.com/ramitos/jsctags.git
